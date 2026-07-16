@@ -1422,7 +1422,7 @@
 
       {
         title: "ServiceTitan",
-        description: "Open ServiceTitan - Timekeeping (Clock-in / Out)",
+        description: "Open ServiceTitan for scheduling or legacy customer information.",
         icon: "🛠️",
         className: "green",
         url: "https://go.servicetitan.com/"
@@ -1533,8 +1533,8 @@
     const BOOKING_PRIORITY = [
       ["1", "Don", "Primary technician. Schedule first whenever available."],
       ["2", "Adam", "Second priority, especially for specialty or complex jobs."],
-      ["3", "Evan & Jay", "Standard residential appointments."],
-      ["4", "CJ & Dominic", "Standard residential appointments."],
+      ["3", "Ebon & Jay", "Standard residential appointments and overflow scheduling."],
+      ["4", "CJ & Dominique", "Standard residential appointments. Prefer bookings after 9:00 AM."],
       ["As Needed", "George", "First-floor dryer vent services based on availability."]
     ];
 
@@ -1580,12 +1580,54 @@
         ],
         notes: [
           "Highest booking priority whenever available.",
-          "Give Don priority with appointments."
+          "Schedule first when qualified and available."
         ],
         warning: "Do not assign second-story dryer vent jobs. Don is not comfortable with heights."
       },
       {
         priority: 2,
+        name: "Adam",
+        role: "Lead Technician / Specialty Services",
+        phones: [
+          ["Adam", "+1 (310) 948-6784"]
+        ],
+        bestFor: [
+          "Second-story dryer vents",
+          "Dryer vent installations",
+          "Dryer vent exit installations",
+          "Bird Guard installations",
+          "One-off service calls"
+        ],
+        notes: [
+          "Very flexible availability.",
+          "May work as early as 7:00 AM.",
+          "May take appointments as late as 7:00 PM.",
+          "Always confirm availability first."
+        ],
+        warning: ""
+      },
+      {
+        priority: 3,
+        name: "Ebon + Jay",
+        role: "Standard Residential / Overflow Team",
+        phones: [
+          ["Ebon", "+1 (704) 264-9802"],
+          ["Jay", "+1 (614) 203-4703"]
+        ],
+        bestFor: [
+          "Standard residential appointments",
+          "General air duct cleaning",
+          "Overflow scheduling",
+          "Assisting with larger jobs"
+        ],
+        notes: [
+          "Jay is training to become the next Lead Technician.",
+          "Use appropriate oversight for more complex assignments."
+        ],
+        warning: ""
+      },
+      {
+        priority: 4,
         name: "CJ + Dominique",
         role: "CJ: Lead Technician · Dominique: Assistant",
         phones: [
@@ -1599,47 +1641,7 @@
         ],
         notes: [
           "Prefer appointments after 9:00 AM.",
-          "Use as a primary standard residential crew."
-        ],
-        warning: ""
-      },
-      {
-        priority: 3,
-        name: "Adam",
-        role: "Lead Technician / Specialty Services",
-        phones: [
-          ["Adam", "+1 (310) 948-6784"]
-        ],
-        bestFor: [
-          "Second-story dryer vents",
-          "One-off service calls",
-          "Early-morning appointments",
-          "Evening appointments"
-        ],
-        notes: [
-          "Very flexible availability.",
-          "May work as early as 7:00 AM.",
-          "May take appointments as late as 7:00 PM.",
-          "Always confirm availability first."
-        ],
-        warning: ""
-      },
-      {
-        priority: 4,
-        name: "Ebon + Jay",
-        role: "Lead Team / General Appointments",
-        phones: [
-          ["Ebon", "+1 (704) 264-9802"],
-          ["Jay", "+1 (614) 203-4703"]
-        ],
-        bestFor: [
-          "General appointments",
-          "Overflow scheduling",
-          "Assisting with larger jobs"
-        ],
-        notes: [
-          "Jay is training to become the next Lead Technician.",
-          "Use appropriate oversight for more complex assignments."
+          "Use for standard residential services when higher-priority crews are unavailable."
         ],
         warning: ""
       }
@@ -1647,9 +1649,9 @@
 
     const TECHNICIAN_SELECTION_PRIORITY = [
       ["1", "Don + Sonia", "Field Manager team. Prioritize Property Management, Romanelli, Sappington, and superintendent requests. No second-story dryers."],
-      ["2", "CJ + Dominique", "Primary residential crew for air duct cleaning and most standard appointments. Book after 9:00 AM."],
-      ["3", "Adam", "Specialist for second-story dryer vents, one-off services, early-morning jobs, and evening appointments."],
-      ["4", "Ebon + Jay", "General appointments and overflow. Jay is training as the next lead."]
+      ["2", "Adam", "Specialist for second-story dryer vents, dryer vent installations, dryer vent exit installations, Bird Guard installations, and one-off services."],
+      ["3", "Ebon + Jay", "Standard residential appointments, general air duct cleaning, larger jobs, and overflow scheduling. Jay is training as the next lead."],
+      ["4", "CJ + Dominique", "Standard residential jobs, air duct cleaning, and general appointments. Prefer bookings after 9:00 AM."]
     ];
 
     function escapeHtml(value) {
