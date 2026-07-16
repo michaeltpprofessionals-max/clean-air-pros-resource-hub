@@ -1198,6 +1198,190 @@
         flex-direction: column;
       }
     }
+
+    @media (max-width: 700px) {
+      .modal {
+        align-items: flex-start;
+        overflow-y: auto;
+        padding: 8px;
+      }
+
+      .modal-panel {
+        width: 100%;
+        max-height: none;
+        margin: 8px 0;
+        padding: 14px;
+        border-radius: 16px;
+      }
+
+      .modal-head {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        margin: -14px -14px 14px;
+        padding: 14px;
+        background: #ffffff;
+        border-bottom: 1px solid var(--line);
+        border-radius: 16px 16px 0 0;
+      }
+
+      .modal-head h2 {
+        font-size: 19px;
+        line-height: 1.25;
+      }
+
+      .close-btn {
+        flex: 0 0 auto;
+      }
+
+      .guide-grid,
+      .team-directory {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .guide-card,
+      .team-card {
+        padding: 14px;
+        border-radius: 14px;
+      }
+
+      .team-card-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .team-priority {
+        margin-top: 2px;
+      }
+
+      .phone-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .phone-item span:last-child {
+        white-space: normal;
+        word-break: break-word;
+      }
+
+      .selection-priority-item {
+        grid-template-columns: 36px 1fr;
+        gap: 8px 10px;
+      }
+
+      .selection-priority-notes {
+        grid-column: 2;
+      }
+
+      .guide-table-wrap {
+        overflow: visible;
+        border: 0;
+        border-radius: 0;
+      }
+
+      .guide-table {
+        min-width: 0;
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+        background: transparent;
+      }
+
+      .guide-table thead {
+        display: none;
+      }
+
+      .guide-table,
+      .guide-table tbody,
+      .guide-table tr,
+      .guide-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .guide-table tr {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+      }
+
+      .guide-table td {
+        display: grid;
+        grid-template-columns: minmax(92px, 38%) 1fr;
+        gap: 10px;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+        font-size: 12px;
+        line-height: 1.45;
+        word-break: break-word;
+      }
+
+      .guide-table td:last-child {
+        border-bottom: 0;
+      }
+
+      .guide-table td::before {
+        content: attr(data-label);
+        color: var(--blue-dark);
+        font-weight: 800;
+      }
+
+      .priority-chip {
+        justify-self: start;
+      }
+
+      .sop-link-box {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .sop-link-box a {
+        width: 100%;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .steps-list,
+      .checks-list,
+      .team-list {
+        padding-left: 18px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .modal {
+        padding: 4px;
+      }
+
+      .modal-panel {
+        margin: 4px 0;
+        padding: 12px;
+      }
+
+      .modal-head {
+        margin: -12px -12px 12px;
+        padding: 12px;
+      }
+
+      .guide-table td {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .selection-priority-item {
+        grid-template-columns: 32px 1fr;
+      }
+
+      .team-card h3,
+      .guide-card h3 {
+        font-size: 16px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1422,7 +1606,7 @@
 
       {
         title: "ServiceTitan",
-        description: "Open ServiceTitan for Timekeeping (Clock-in / Clock-out).",
+        description: "Open ServiceTitan for scheduling or legacy customer information.",
         icon: "🛠️",
         className: "green",
         url: "https://go.servicetitan.com/"
@@ -1674,13 +1858,14 @@
               ${rows.map(row => `
                 <tr>
                   ${row.map((cell, index) => {
+                    const label = escapeHtml(headers[index] || "");
                     if (priorityTable && index === 0) {
                       const className = cell === "As Needed"
                         ? "priority-chip as-needed"
                         : "priority-chip";
-                      return `<td><span class="${className}">${escapeHtml(cell)}</span></td>`;
+                      return `<td data-label="${label}"><span class="${className}">${escapeHtml(cell)}</span></td>`;
                     }
-                    return `<td>${escapeHtml(cell)}</td>`;
+                    return `<td data-label="${label}">${escapeHtml(cell)}</td>`;
                   }).join("")}
                 </tr>
               `).join("")}
