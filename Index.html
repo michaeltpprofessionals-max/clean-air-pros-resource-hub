@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base target="_blank">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1264b0">
+  <title>Clean Air Pros | Erick Resource Hub</title>
+
+  <style>
+    :root {
+      --blue: #1264b0;
+      --blue-dark: #0b477f;
+      --green: #2c8d43;
+      --green-soft: #eaf7ed;
+      --orange: #ff5000;
+      --ink: #17324d;
+      --muted: #657789;
+      --line: #dce7f0;
+      --surface: #ffffff;
+      --background: #f4f8fb;
+      --shadow: 0 12px 32px rgba(15, 70, 120, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(44, 141, 67, 0.10), transparent 30%),
+        linear-gradient(180deg, #eef6fb 0%, var(--background) 42%, #ffffff 100%);
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 18px 22px;
+      position: sticky;
+      top: 14px;
+      z-index: 10;
+    }
+
+    .brand img {
+      width: 330px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green);
+      background: var(--green-soft);
+      border: 1px solid #ccebd3;
+      border-radius: 999px;
+      padding: 9px 13px;
+    }
+
+    .status::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(44, 141, 67, 0.12);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .hero-card,
+    .quick-card {
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      color: #fff;
+      padding: 38px;
+      position: relative;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      right: -75px;
+      top: -95px;
+      background: rgba(255,255,255,0.10);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #bde3ff;
+      font-weight: 700;
+      letter-spacing: .12em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(31px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      max-width: 780px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy {
+      margin: 18px 0 0;
+      max-width: 720px;
+      color: #e4f3ff;
+      font-size: 17px;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border-radius: 13px;
+      padding: 0 17px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .primary-btn {
+      background: #fff;
+      color: var(--blue-dark);
+    }
+
+    .secondary-btn {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.24);
+    }
+
+
+    .technician-attention-btn {
+      background: #ffffff;
+      color: var(--blue-dark);
+      border: 2px solid #ffffff;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+      animation: guidePulse 2.2s ease-in-out infinite;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .technician-attention-btn:hover,
+    .technician-attention-btn:focus-visible {
+      animation-play-state: paused;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+      outline: 3px solid rgba(255, 255, 255, 0.30);
+      outline-offset: 3px;
+    }
+
+    @keyframes guidePulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow:
+          0 8px 20px rgba(0, 0, 0, 0.16),
+          0 0 0 rgba(255, 255, 255, 0);
+      }
+
+      20% {
+        transform: scale(1.04);
+        box-shadow:
+          0 12px 28px rgba(0, 0, 0, 0.20),
+          0 0 22px rgba(255, 255, 255, 0.75);
+      }
+
+      40% {
+        transform: scale(1);
+        box-shadow:
+          0 8px 20px rgba(0, 0, 0, 0.16),
+          0 0 0 rgba(255, 255, 255, 0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .technician-attention-btn {
+        animation: none;
+      }
+    }
+
+    .quick-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quick-card h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .quick-card p {
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .quick-stat {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      background: #fbfdff;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      color: var(--blue);
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .resource-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 190px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 8px 22px rgba(15, 70, 120, 0.06);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      cursor: pointer;
+    }
+
+
+    button.resource-card {
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .resource-card:hover,
+    .resource-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: #a8cce7;
+      box-shadow: 0 15px 32px rgba(15, 70, 120, 0.12);
+      outline: none;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-size: 23px;
+      background: #eaf4fb;
+      margin-bottom: 18px;
+    }
+
+    .resource-card.green .icon { background: var(--green-soft); }
+    .resource-card.orange .icon { background: #fff0e9; }
+
+    .resource-card h3 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.28;
+    }
+
+    .resource-card p {
+      margin: 9px 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .open {
+      margin-top: auto;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .open::after { content: " ↗"; }
+
+    .notice {
+      margin-top: 22px;
+      border: 1px solid #f1d8c8;
+      border-left: 5px solid var(--orange);
+      background: #fffaf7;
+      border-radius: 16px;
+      padding: 16px 18px;
+      color: #71432d;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 34px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    footer strong { color: var(--orange); }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(8, 34, 57, .62);
+    }
+
+    .modal.open { display: flex; }
+
+    .modal-panel {
+      width: min(920px, 100%);
+      max-height: 85vh;
+      overflow: auto;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.28);
+      padding: 24px;
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .modal-head h2 { margin: 0; font-size: 22px; }
+
+    .close-btn {
+      border: 0;
+      background: #edf3f7;
+      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 15px;
+    }
+
+    .contact b { display: block; }
+    .contact small { color: var(--muted); }
+
+    .contact a {
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--blue);
+      white-space: nowrap;
+    }
+
+
+    .booking-summary {
+      border: 1px solid #cfe2f1;
+      background: linear-gradient(135deg, #f3f9fd, #ffffff);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .booking-summary h3 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 18px;
+    }
+
+    .booking-summary p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .priority-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .priority-row {
+      display: grid;
+      grid-template-columns: 42px minmax(135px, .55fr) 1.45fr;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+
+    .priority-number {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .priority-name {
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .priority-rule {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .guide-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 18px;
+    }
+
+    .guide-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .guide-card h3 {
+      margin: 0 0 12px;
+      color: var(--blue-dark);
+      font-size: 18px;
+    }
+
+    .guide-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .guide-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      background: #fff;
+    }
+
+    .guide-table th,
+    .guide-table td {
+      text-align: left;
+      vertical-align: top;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .guide-table th {
+      background: #f1f7fb;
+      color: var(--blue-dark);
+      font-weight: 800;
+    }
+
+    .guide-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .priority-chip {
+      display: inline-flex;
+      min-width: 30px;
+      height: 30px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 0 9px;
+    }
+
+    .priority-chip.as-needed {
+      background: var(--green);
+      min-width: auto;
+    }
+
+    .steps-list,
+    .checks-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .steps-list li + li,
+    .checks-list li + li {
+      margin-top: 5px;
+    }
+
+    .best-practice {
+      margin-top: 14px;
+      border: 1px solid #f1d8c8;
+      border-left: 5px solid var(--orange);
+      background: #fffaf7;
+      border-radius: 12px;
+      padding: 13px 14px;
+      color: #71432d;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .sop-link-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-radius: 14px;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      color: #fff;
+    }
+
+    .sop-link-box p {
+      color: #e4f3ff;
+    }
+
+    .sop-link-box a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 15px;
+      border-radius: 11px;
+      background: #fff;
+      color: var(--blue-dark);
+      text-decoration: none;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+
+
+    .pricing-modal-panel {
+      width: min(980px, 100%);
+      max-height: 92vh;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .pricing-modal-head {
+      margin: 0;
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #f3f9fd, #ffffff);
+      align-items: flex-start;
+    }
+
+    .pricing-image-wrap {
+      max-height: calc(92vh - 155px);
+      overflow: auto;
+      padding: 18px;
+      background: #edf4f8;
+      text-align: center;
+    }
+
+    .pricing-guide-image {
+      display: block;
+      width: min(100%, 760px);
+      height: auto;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(15, 70, 120, 0.16);
+      background: #fff;
+    }
+
+    .pricing-modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 13px 18px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .pricing-full-view {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      border-radius: 10px;
+      padding: 0 14px;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .secondary-pricing-link {
+      background: var(--green);
+    }
+
+    .secondary-pricing-link:hover,
+    .secondary-pricing-link:focus-visible {
+      background: #237438;
+    }
+
+    @media (max-width: 620px) {
+      .pricing-modal-panel {
+        max-height: 94vh;
+      }
+
+      .pricing-image-wrap {
+        max-height: calc(94vh - 190px);
+        padding: 10px;
+      }
+
+      .pricing-modal-footer {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .pricing-full-view,
+      .pricing-modal-footer .modal-close-text {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .sop-modal-panel {
+      width: min(820px, 100%);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .sop-modal-panel .modal-head {
+      align-items: flex-start;
+      margin: 0;
+      padding: 24px 26px 20px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #f3f9fd, #ffffff);
+    }
+
+    .modal-eyebrow {
+      margin: 0 0 5px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .modal-subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .sop-choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding: 24px 26px;
+      background: #f8fbfd;
+    }
+
+    .sop-choice-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 300px;
+      padding: 22px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(15, 70, 120, 0.07);
+    }
+
+    .sop-choice-card.recommended {
+      border: 2px solid var(--green);
+      box-shadow: 0 12px 28px rgba(44, 141, 67, 0.13);
+    }
+
+    .recommended-ribbon {
+      position: absolute;
+      top: 14px;
+      right: -33px;
+      width: 135px;
+      padding: 6px 0;
+      transform: rotate(38deg);
+      background: var(--green);
+      color: #fff;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .sop-choice-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      margin-bottom: 18px;
+      background: #edf5fb;
+      font-size: 26px;
+    }
+
+    .recommended .sop-choice-icon {
+      background: var(--green-soft);
+    }
+
+    .sop-choice-content {
+      flex: 1;
+    }
+
+    .sop-choice-heading {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 10px;
+    }
+
+    .sop-choice-heading h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 20px;
+    }
+
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 25px;
+      padding: 0 9px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .version-badge.archive {
+      background: #edf3f7;
+      color: var(--muted);
+    }
+
+    .version-badge.current {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .sop-choice-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .sop-view-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      width: 100%;
+      margin-top: 22px;
+      padding: 0 14px;
+      border-radius: 12px;
+      background: #edf5fb;
+      color: var(--blue-dark);
+      text-decoration: none;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .sop-view-btn:hover,
+    .sop-view-btn:focus-visible {
+      transform: translateY(-2px);
+      background: #dfeef8;
+      outline: none;
+    }
+
+    .sop-view-btn.primary {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .sop-view-btn.primary:hover,
+    .sop-view-btn.primary:focus-visible {
+      background: #237438;
+    }
+
+    .sop-view-btn::after {
+      content: " ↗";
+      margin-left: 5px;
+    }
+
+    .sop-modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      padding: 15px 26px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .modal-close-text {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 15px;
+      background: #edf3f7;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    @media (max-width: 620px) {
+      .sop-choice-grid {
+        grid-template-columns: 1fr;
+        padding: 18px;
+      }
+
+      .sop-modal-panel .modal-head {
+        padding: 20px 18px 16px;
+      }
+
+      .sop-modal-footer {
+        padding: 14px 18px;
+      }
+
+      .sop-choice-card {
+        min-height: 0;
+      }
+    }
+
+
+    .team-directory {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .team-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(15, 70, 120, 0.06);
+    }
+
+    .team-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: var(--blue);
+    }
+
+    .team-card.priority-1::before { background: var(--orange); }
+    .team-card.priority-2::before { background: var(--blue); }
+    .team-card.priority-3::before { background: var(--green); }
+    .team-card.priority-4::before { background: #7654a4; }
+
+    .team-card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .team-card h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 19px;
+    }
+
+    .team-role {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .team-priority {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: #edf5fb;
+      color: var(--blue-dark);
+      white-space: nowrap;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .priority-1 .team-priority {
+      background: #fff0e8;
+      color: #a93c08;
+    }
+
+    .priority-3 .team-priority {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .priority-4 .team-priority {
+      background: #f2edf8;
+      color: #62458a;
+    }
+
+    .phone-list {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 12px;
+      border-radius: 12px;
+      background: #f7fafc;
+      border: 1px solid var(--line);
+    }
+
+    .phone-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .phone-item span:last-child {
+      color: var(--blue-dark);
+      white-space: nowrap;
+    }
+
+    .team-section-label {
+      margin: 14px 0 7px;
+      color: var(--blue-dark);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .team-list {
+      margin: 0;
+      padding-left: 19px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .team-list li + li {
+      margin-top: 3px;
+    }
+
+    .team-warning {
+      margin-top: 12px;
+      padding: 10px 11px;
+      border-radius: 10px;
+      border: 1px solid #f0d4c3;
+      background: #fff7f2;
+      color: #7b3f21;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .selection-priority-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .selection-priority-item {
+      display: grid;
+      grid-template-columns: 42px minmax(145px, .5fr) 1.5fr;
+      gap: 12px;
+      align-items: start;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+    }
+
+    .selection-priority-number {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .selection-priority-name {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .selection-priority-notes {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(100% - 20px, 1180px);
+        padding-top: 10px;
+      }
+
+      .topbar {
+        position: static;
+        padding: 15px;
+        border-radius: 17px;
+      }
+
+      .brand img { width: 255px; }
+      .status { display: none; }
+      .hero-card { padding: 28px 22px; }
+
+      .technician-attention-btn {
+        width: 100%;
+      }
+      .quick-card { padding: 22px; }
+      .grid { grid-template-columns: 1fr; }
+      .resource-card { min-height: 165px; }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .guide-grid,
+      .team-directory {
+        grid-template-columns: 1fr;
+      }
+
+      .selection-priority-item {
+        grid-template-columns: 38px 1fr;
+      }
+
+      .selection-priority-notes {
+        grid-column: 2;
+      }
+
+      .guide-card.full {
+        grid-column: auto;
+      }
+
+      .sop-link-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="data:image/png;base64,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" alt="Clean Air Pros LLC">
+      </div>
+      <div class="status">Resource Hub Active</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <p class="eyebrow">Clean Air Pros Ohio</p>
+        <h1>Erick's Resource Hub</h1>
+        <p class="hero-copy">
+          One organized place for training materials, call tools, company systems,
+          technician contacts, pricing information, and customer service references.
+        </p>
+
+        <div class="hero-actions">
+          <button class="secondary-btn technician-attention-btn" type="button" onclick="openContacts()">Technician Guide</button>
+        </div>
+      </div>
+
+      <aside class="quick-card">
+        <div>
+          <h2>Quick Access</h2>
+          <p>Use the cards below to open the tools and references needed during daily calls.</p>
+        </div>
+
+        <div class="quick-stat">
+          <div class="stat">
+            <strong>8</strong>
+            <span>Main resources</span>
+          </div>
+          <div class="stat">
+            <strong>1</strong>
+            <span>Central hub</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="resources">
+      <div class="section-head">
+        <div>
+          <h2>Daily Resources</h2>
+          <p>Open the tools, training materials, and references needed for daily operations.</p>
+        </div>
+      </div>
+
+      <div class="grid" id="resourceGrid"></div>
+
+
+    </section>
+
+    <footer>
+      Clean Air Pros LLC · Columbus, Ohio<br>
+      Provided by <strong>TradesPro Professionals</strong>
+    </footer>
+  </main>
+
+
+
+  <div class="modal" id="pricingModal" aria-hidden="true">
+    <div class="modal-panel pricing-modal-panel" role="dialog" aria-modal="true" aria-labelledby="pricingTitle">
+      <div class="modal-head pricing-modal-head">
+        <div>
+          <p class="modal-eyebrow">Clean Air Pros Reference</p>
+          <h2 id="pricingTitle">Service Pricing Guide</h2>
+          <p class="modal-subtitle">Review packages, services, discounts, and additional fees.</p>
+        </div>
+        <button class="close-btn" type="button" onclick="closePricing()" aria-label="Close">✕</button>
+      </div>
+
+      <div class="pricing-image-wrap">
+        <img
+          src="https://cdn.imgtree.co/images/7z4TQTVR.png"
+          alt="Clean Air Pros Service Pricing Guide"
+          class="pricing-guide-image"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="pricing-modal-footer">
+        <a
+          class="pricing-full-view"
+          href="https://cdn.imgtree.co/images/7z4TQTVR.png"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open Full-Size Pricing Guide ↗
+        </a>
+        <a
+          class="pricing-full-view secondary-pricing-link"
+          href="https://drive.google.com/drive/u/8/folders/1Zz8NSHTArJwewlrGPaWy98JoSTb1WKe3"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open Pricing Files ↗
+        </a>
+        <button type="button" class="modal-close-text" onclick="closePricing()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="sopModal" aria-hidden="true">
+    <div class="modal-panel sop-modal-panel" role="dialog" aria-modal="true" aria-labelledby="sopTitle">
+      <div class="modal-head">
+        <div>
+          <p class="modal-eyebrow">Clean Air Pros Training Library</p>
+          <h2 id="sopTitle">Clean Air Pros SOPs</h2>
+          <p class="modal-subtitle">Select the SOP version you would like to review.</p>
+        </div>
+        <button class="close-btn" type="button" onclick="closeSops()" aria-label="Close">✕</button>
+      </div>
+
+      <div class="sop-choice-grid">
+        <article class="sop-choice-card">
+          <div class="sop-choice-icon">📘</div>
+          <div class="sop-choice-content">
+            <div class="sop-choice-heading">
+              <h3>SOP Version 1</h3>
+              <span class="version-badge archive">Reference</span>
+            </div>
+            <p>
+              Review the original Clean Air Pros standard operating procedure
+              for historical reference and comparison.
+            </p>
+          </div>
+          <a
+            class="sop-view-btn"
+            href="https://docs.google.com/document/d/16ow0LR2IbMUWsktf0ui8BDqnb5qmcTk38V16sSVvIOQ/edit?tab=t.0#heading=h.ngkfyx9t3ayx"
+            rel="noopener noreferrer"
+          >
+            Click Here to View Version 1
+          </a>
+        </article>
+
+        <article class="sop-choice-card recommended">
+          <div class="recommended-ribbon">Recommended</div>
+          <div class="sop-choice-icon">📗</div>
+          <div class="sop-choice-content">
+            <div class="sop-choice-heading">
+              <h3>SOP Version 2</h3>
+              <span class="version-badge current">Current</span>
+            </div>
+            <p>
+              Open the latest Clean Air Pros operating procedure recommended
+              for Erick's daily calls, scheduling, and customer support.
+            </p>
+          </div>
+          <a
+            class="sop-view-btn primary"
+            href="https://docs.google.com/document/d/1w5dYdM9BPODewIFlnh6XuBUJvkMbFHEFwShwAsTAITs/edit?tab=t.0"
+            rel="noopener noreferrer"
+          >
+            Click Here to View Version 2
+          </a>
+        </article>
+      </div>
+
+      <div class="sop-modal-footer">
+        <button type="button" class="modal-close-text" onclick="closeSops()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="contactModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+      <div class="modal-head">
+        <h2 id="contactTitle">Things to Know About the Technicians</h2>
+        <button class="close-btn" type="button" onclick="closeContacts()" aria-label="Close">✕</button>
+      </div>
+      <div class="guide-grid" id="technicianGuide"></div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================================
+    // RESOURCE LINKS
+    // Current Clean Air Pros links are configured below.
+    // ==========================================================
+    const RESOURCE_LINKS = [
+      {
+        title: "Clean Air Pros SOPs",
+        description: "Open the SOP library and choose between Version 1 and Version 2.",
+        icon: "📚",
+        className: "",
+        action: "sops"
+      },
+      {
+        title: "Call Script",
+        description: "Use the approved customer call flow, questions, and closing steps.",
+        icon: "☎️",
+        className: "orange",
+        url: "https://docs.google.com/document/d/1PnnZM85RbU1U_kN4YSSEPADbYb3tBjF2M1_qvIDfGRE/edit?tab=t.0"
+      },
+      {
+        title: "Rares Call Recordings",
+        description: "Listen to real calls for training, tone, pricing, and objection handling.",
+        icon: "🎧",
+        className: "",
+        url: "https://drive.google.com/drive/folders/1S9C3mOESuBS8vOOzzpt-qjBlioBL0Efn?usp=drive_link"
+      },
+      {
+        title: "Dialpad Web",
+        description: "Open Dialpad to receive, place, and review customer calls.",
+        icon: "📞",
+        className: "green",
+        url: "https://dialpad.com/app"
+      },
+      {
+        title: "Thryv",
+        description: "Access customer records, conversations, appointments, and scheduling.",
+        icon: "🗓️",
+        className: "orange",
+        url: "https://go.thryv.com/app"
+      },
+
+      {
+        title: "ServiceTitan",
+        description: "Open ServiceTitan for scheduling or legacy customer information.",
+        icon: "🛠️",
+        className: "green",
+        url: "https://go.servicetitan.com/"
+      },
+      {
+        title: "Pricing Guide",
+        description: "View the complete Clean Air Pros service pricing guide.",
+        icon: "💲",
+        className: "orange",
+        action: "pricing"
+      },
+      {
+        title: "Clean Air Pros FAQs",
+        description: "Review common customer questions from the Clean Air Pros website.",
+        icon: "❓",
+        className: "",
+        url: "https://ohioductcleaning.com/frequently-asked-questions/"
+      }
+    ];
+
+
+    function renderResources() {
+      const grid = document.getElementById("resourceGrid");
+
+      grid.innerHTML = RESOURCE_LINKS.map((item) => {
+        const cardClass = `resource-card ${item.className || ""}`;
+
+        if (item.action === "sops") {
+          return `
+            <button
+              type="button"
+              class="${cardClass}"
+              onclick="openSops()"
+              aria-label="Open Clean Air Pros SOP Library"
+            >
+              <div class="icon">${item.icon}</div>
+              <h3>${item.title}</h3>
+              <p>${item.description}</p>
+              <span class="open">View SOPs</span>
+            </button>
+          `;
+        }
+
+        if (item.action === "contacts") {
+          return `
+            <button
+              type="button"
+              class="${cardClass}"
+              onclick="openContacts()"
+              aria-label="Open Technician Guide"
+            >
+              <div class="icon">${item.icon}</div>
+              <h3>${item.title}</h3>
+              <p>${item.description}</p>
+              <span class="open">Open guide</span>
+            </button>
+          `;
+        }
+
+        if (item.action === "pricing") {
+          return `
+            <button
+              type="button"
+              class="${cardClass}"
+              onclick="openPricing()"
+              aria-label="Open Clean Air Pros Pricing Guide"
+            >
+              <div class="icon">${item.icon}</div>
+              <h3>${item.title}</h3>
+              <p>${item.description}</p>
+              <span class="open">View pricing</span>
+            </button>
+          `;
+        }
+
+        return `
+          <a
+            class="${cardClass}"
+            href="${item.url}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="icon">${item.icon}</div>
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+            <span class="open">Open resource</span>
+          </a>
+        `;
+      }).join("");
+    }
+
+    // ==========================================================
+    // TECHNICIAN BOOKING GUIDE
+    // Replace SOP_VERSION_2_LINK with the actual SOP Version 2 URL.
+    // ==========================================================
+    const SOP_VERSION_2_LINK = "https://docs.google.com/document/d/1w5dYdM9BPODewIFlnh6XuBUJvkMbFHEFwShwAsTAITs/edit?tab=t.0";
+
+    const SERVICE_ASSIGNMENTS = [
+      ["Air Duct Cleaning", "Any Available Crew"],
+      ["Dryer Vent Cleaning", "Based on vent location"],
+      ["Dryer Vent Installation", "Adam, Don"],
+      ["Dryer Vent Exit Installation", "Adam, Don"],
+      ["Bird Guard Installation", "Adam, Don"],
+      ["Specialty or One-Off Jobs", "Adam"],
+      ["Standard Residential Services", "Any Available Crew"]
+    ];
+
+    const BOOKING_PRIORITY = [
+      ["1", "Don", "Primary technician. Schedule first whenever available."],
+      ["2", "Adam", "Second priority, especially for specialty or complex jobs."],
+      ["3", "Evan & Jay", "Standard residential appointments."],
+      ["4", "CJ & Dominic", "Standard residential appointments."],
+      ["As Needed", "George", "First-floor dryer vent services based on availability."]
+    ];
+
+    const APPOINTMENT_DURATIONS = [
+      ["Air Duct Cleaning", "3 Hours"],
+      ["Small Air Duct Cleaning", "2 Hours"],
+      ["First Floor Dryer Vent Cleaning", "30–60 Minutes"],
+      ["Second Floor or Roof Dryer Vent Cleaning", "Approximately 1 Hour"],
+      ["Dryer Vent Installation", "1–2 Hours"],
+      ["Return Visit / Warranty Service", "30–60 Minutes"]
+    ];
+
+    const SCHEDULING_PROCESS = [
+      "Determine the service requested.",
+      "Match the service to the appropriate technician.",
+      "Check technician availability.",
+      "Apply booking priority if multiple technicians are available.",
+      "Optimize the schedule to reduce travel time and minimize gaps."
+    ];
+
+    const TECHNICIAN_CHECKS = [
+      "Is the technician available during the requested appointment window?",
+      "Does the technician specialize in the requested service?",
+      "Will this assignment reduce travel time?",
+      "Will it create unnecessary gaps in the schedule?",
+      "Is another technician better suited for the job?"
+    ];
+
+    const TECHNICIAN_TEAMS = [
+      {
+        priority: 1,
+        name: "Don + Sonia",
+        role: "Don: Field Manager / Lead Technician",
+        phones: [
+          ["Don", "+1 (380) 209-7055"],
+          ["Sonia", "+1 (614) 632-4109"]
+        ],
+        bestFor: [
+          "Romanelli appointments",
+          "Sappington appointments",
+          "Property Management work",
+          "Superintendent requests"
+        ],
+        notes: [
+          "Highest booking priority whenever available.",
+          "Give Don priority with appointments."
+        ],
+        warning: "Do not assign second-story dryer vent jobs. Don is not comfortable with heights."
+      },
+      {
+        priority: 2,
+        name: "CJ + Dominique",
+        role: "CJ: Lead Technician · Dominique: Assistant",
+        phones: [
+          ["CJ", "+1 (614) 984-5011"],
+          ["Dominique", "+1 (380) 260-8867"]
+        ],
+        bestFor: [
+          "Standard air duct cleaning",
+          "Residential jobs",
+          "General appointments"
+        ],
+        notes: [
+          "Prefer appointments after 9:00 AM.",
+          "Use as a primary standard residential crew."
+        ],
+        warning: ""
+      },
+      {
+        priority: 3,
+        name: "Adam",
+        role: "Lead Technician / Specialty Services",
+        phones: [
+          ["Adam", "+1 (310) 948-6784"]
+        ],
+        bestFor: [
+          "Second-story dryer vents",
+          "One-off service calls",
+          "Early-morning appointments",
+          "Evening appointments"
+        ],
+        notes: [
+          "Very flexible availability.",
+          "May work as early as 7:00 AM.",
+          "May take appointments as late as 7:00 PM.",
+          "Always confirm availability first."
+        ],
+        warning: ""
+      },
+      {
+        priority: 4,
+        name: "Ebon + Jay",
+        role: "Lead Team / General Appointments",
+        phones: [
+          ["Ebon", "+1 (704) 264-9802"],
+          ["Jay", "+1 (614) 203-4703"]
+        ],
+        bestFor: [
+          "General appointments",
+          "Overflow scheduling",
+          "Assisting with larger jobs"
+        ],
+        notes: [
+          "Jay is training to become the next Lead Technician.",
+          "Use appropriate oversight for more complex assignments."
+        ],
+        warning: ""
+      }
+    ];
+
+    const TECHNICIAN_SELECTION_PRIORITY = [
+      ["1", "Don + Sonia", "Field Manager team. Prioritize Property Management, Romanelli, Sappington, and superintendent requests. No second-story dryers."],
+      ["2", "CJ + Dominique", "Primary residential crew for air duct cleaning and most standard appointments. Book after 9:00 AM."],
+      ["3", "Adam", "Specialist for second-story dryer vents, one-off services, early-morning jobs, and evening appointments."],
+      ["4", "Ebon + Jay", "General appointments and overflow. Jay is training as the next lead."]
+    ];
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function makeTable(headers, rows, priorityTable = false) {
+      return `
+        <div class="guide-table-wrap">
+          <table class="guide-table">
+            <thead>
+              <tr>${headers.map(header => `<th>${escapeHtml(header)}</th>`).join("")}</tr>
+            </thead>
+            <tbody>
+              ${rows.map(row => `
+                <tr>
+                  ${row.map((cell, index) => {
+                    if (priorityTable && index === 0) {
+                      const className = cell === "As Needed"
+                        ? "priority-chip as-needed"
+                        : "priority-chip";
+                      return `<td><span class="${className}">${escapeHtml(cell)}</span></td>`;
+                    }
+                    return `<td>${escapeHtml(cell)}</td>`;
+                  }).join("")}
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function openContacts() {
+      const guide = document.getElementById("technicianGuide");
+
+      guide.innerHTML = `
+        <section class="guide-card full">
+          <h3>Technician Booking Guide</h3>
+          <div class="team-directory">
+            ${TECHNICIAN_TEAMS.map(team => `
+              <article class="team-card priority-${team.priority}">
+                <div class="team-card-head">
+                  <div>
+                    <h3>${escapeHtml(team.name)}</h3>
+                    <span class="team-role">${escapeHtml(team.role)}</span>
+                  </div>
+                  <span class="team-priority">Priority ${team.priority}</span>
+                </div>
+
+                <div class="phone-list">
+                  ${team.phones.map(phone => `
+                    <div class="phone-item">
+                      <span>📞 ${escapeHtml(phone[0])}</span>
+                      <span>${escapeHtml(phone[1])}</span>
+                    </div>
+                  `).join("")}
+                </div>
+
+                <div class="team-section-label">Best For</div>
+                <ul class="team-list">
+                  ${team.bestFor.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
+                </ul>
+
+                <div class="team-section-label">Notes</div>
+                <ul class="team-list">
+                  ${team.notes.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
+                </ul>
+
+                ${team.warning
+                  ? `<div class="team-warning"><strong>Important:</strong> ${escapeHtml(team.warning)}</div>`
+                  : ""}
+              </article>
+            `).join("")}
+          </div>
+        </section>
+
+        <section class="guide-card full">
+          <h3>Technician Selection Priority</h3>
+          <div class="selection-priority-list">
+            ${TECHNICIAN_SELECTION_PRIORITY.map(item => `
+              <div class="selection-priority-item">
+                <div class="selection-priority-number">${escapeHtml(item[0])}</div>
+                <div class="selection-priority-name">${escapeHtml(item[1])}</div>
+                <div class="selection-priority-notes">${escapeHtml(item[2])}</div>
+              </div>
+            `).join("")}
+          </div>
+        </section>
+
+        <section class="guide-card full">
+          <h3>Service and Preferred Technicians</h3>
+          ${makeTable(
+            ["Service", "Preferred Technician(s)"],
+            SERVICE_ASSIGNMENTS
+          )}
+        </section>
+
+        <section class="guide-card">
+          <h3>3.7 Technician Assignment Hierarchy</h3>
+          <p>
+            Once the required service and qualified technicians are identified,
+            use this process to determine who should receive the appointment.
+          </p>
+          <ol class="steps-list">
+            ${SCHEDULING_PROCESS.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
+          </ol>
+        </section>
+
+        <section class="guide-card">
+          <h3>Best Practice from Rares</h3>
+          <p>
+            Always check availability first. When more than one technician is available,
+            prioritize Don, followed by Adam, then Evan & Jay, and finally CJ & Dominic.
+          </p>
+          <div class="best-practice">
+            Service qualification and current availability come first. Use the priority
+            order only when multiple qualified technicians are available for the same service.
+          </div>
+        </section>
+
+        <section class="guide-card full">
+          <h3>Booking Priority</h3>
+          ${makeTable(
+            ["Priority", "Technician", "Notes"],
+            BOOKING_PRIORITY,
+            true
+          )}
+        </section>
+
+        <section class="guide-card">
+          <h3>3.8 Choosing the Right Technician</h3>
+          <ul class="checks-list">
+            ${TECHNICIAN_CHECKS.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
+          </ul>
+        </section>
+
+        <section class="guide-card">
+          <h3>Why Assignment Matters</h3>
+          <p>
+            Selecting the right technician improves operational efficiency,
+            reduces unnecessary travel and schedule gaps, and creates a better
+            experience for the customer.
+          </p>
+        </section>
+
+        <section class="guide-card full">
+          <h3>3.9 Appointment Duration Guidelines</h3>
+          ${makeTable(
+            ["Service", "Typical Duration"],
+            APPOINTMENT_DURATIONS
+          )}
+        </section>
+
+        <section class="guide-card full">
+          <div class="sop-link-box">
+            <div>
+              <h3 style="color:#fff; margin-bottom:6px;">Need More Information?</h3>
+              <p>Review the complete Clean Air Pros SOP Version 2.</p>
+            </div>
+            <a href="${SOP_VERSION_2_LINK}">Open SOP Version 2 ↗</a>
+          </div>
+        </section>
+      `;
+
+      const modal = document.getElementById("contactModal");
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+
+
+    function openPricing() {
+      const modal = document.getElementById("pricingModal");
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closePricing() {
+      const modal = document.getElementById("pricingModal");
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function openSops() {
+      const modal = document.getElementById("sopModal");
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeSops() {
+      const modal = document.getElementById("sopModal");
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function closeContacts() {
+      const modal = document.getElementById("contactModal");
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    document.getElementById("contactModal").addEventListener("click", function(event) {
+      if (event.target === this) closeContacts();
+    });
+
+    document.getElementById("sopModal").addEventListener("click", function(event) {
+      if (event.target === this) closeSops();
+    });
+
+    document.getElementById("pricingModal").addEventListener("click", function(event) {
+      if (event.target === this) closePricing();
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeContacts();
+        closeSops();
+        closePricing();
+      }
+    });
+
+    renderResources();
+  </script>
+</body>
+</html>
