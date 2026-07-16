@@ -24,10 +24,15 @@
 
     * { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
 
     body {
       margin: 0;
+      overflow-x: hidden;
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--ink);
@@ -409,6 +414,22 @@
     }
 
     .modal.open { display: flex; }
+
+    .modal *,
+    .modal *::before,
+    .modal *::after {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .team-card,
+    .guide-card,
+    .phone-list,
+    .selection-priority-item {
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
 
     .modal-panel {
       width: min(920px, 100%);
@@ -1202,83 +1223,159 @@
     @media (max-width: 700px) {
       .modal {
         align-items: flex-start;
+        justify-content: center;
         overflow-y: auto;
-        padding: 8px;
+        overflow-x: hidden;
+        padding: 10px;
       }
 
       .modal-panel {
-        width: 100%;
+        width: calc(100vw - 20px);
+        max-width: calc(100vw - 20px);
         max-height: none;
-        margin: 8px 0;
+        margin: 8px auto 18px;
         padding: 14px;
-        border-radius: 16px;
+        border-radius: 18px;
+        overflow-x: hidden;
       }
 
       .modal-head {
         position: sticky;
-        top: 0;
-        z-index: 5;
+        top: -1px;
+        z-index: 10;
         margin: -14px -14px 14px;
         padding: 14px;
-        background: #ffffff;
+        background: #fff;
         border-bottom: 1px solid var(--line);
-        border-radius: 16px 16px 0 0;
+        border-radius: 18px 18px 0 0;
       }
 
       .modal-head h2 {
-        font-size: 19px;
-        line-height: 1.25;
+        max-width: calc(100% - 52px);
+        font-size: 20px;
+        line-height: 1.2;
       }
 
       .close-btn {
-        flex: 0 0 auto;
+        width: 38px;
+        height: 38px;
+        flex: 0 0 38px;
       }
 
       .guide-grid,
       .team-directory {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
         gap: 12px;
+        width: 100%;
       }
 
       .guide-card,
       .team-card {
+        width: 100%;
         padding: 14px;
         border-radius: 14px;
       }
 
+      .guide-card h3 {
+        font-size: 18px;
+        line-height: 1.25;
+      }
+
       .team-card-head {
-        flex-direction: column;
-        align-items: flex-start;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 8px;
+      }
+
+      .team-card h3 {
+        font-size: 18px;
+        line-height: 1.25;
+      }
+
+      .team-role {
+        font-size: 12px;
+        line-height: 1.45;
       }
 
       .team-priority {
-        margin-top: 2px;
+        font-size: 10px;
+        min-height: 26px;
+        padding: 0 8px;
+      }
+
+      .phone-list {
+        gap: 6px;
+        padding: 10px;
       }
 
       .phone-item {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 3px;
+        display: grid;
+        grid-template-columns: minmax(74px, auto) minmax(0, 1fr);
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      .phone-item span:first-child {
+        font-weight: 800;
       }
 
       .phone-item span:last-child {
+        color: var(--blue-dark);
+        text-align: right;
         white-space: normal;
-        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      .team-section-label {
+        margin-top: 12px;
+        font-size: 10px;
+      }
+
+      .team-list,
+      .steps-list,
+      .checks-list {
+        padding-left: 18px;
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .team-warning,
+      .best-practice,
+      .guide-card p {
+        font-size: 12px;
+        line-height: 1.5;
       }
 
       .selection-priority-item {
-        grid-template-columns: 36px 1fr;
-        gap: 8px 10px;
+        display: grid;
+        grid-template-columns: 34px minmax(0, 1fr);
+        gap: 7px 10px;
+        padding: 11px;
+      }
+
+      .selection-priority-number {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+      }
+
+      .selection-priority-name {
+        align-self: center;
+        font-size: 13px;
       }
 
       .selection-priority-notes {
         grid-column: 2;
+        font-size: 12px;
+        line-height: 1.45;
       }
 
       .guide-table-wrap {
         overflow: visible;
         border: 0;
-        border-radius: 0;
       }
 
       .guide-table {
@@ -1286,7 +1383,7 @@
         width: 100%;
         table-layout: fixed;
         border-collapse: separate;
-        border-spacing: 0 10px;
+        border-spacing: 0 8px;
         background: transparent;
       }
 
@@ -1311,13 +1408,13 @@
 
       .guide-table td {
         display: grid;
-        grid-template-columns: minmax(92px, 38%) 1fr;
-        gap: 10px;
-        padding: 10px 12px;
+        grid-template-columns: 92px minmax(0, 1fr);
+        gap: 8px;
+        padding: 9px 10px;
         border-bottom: 1px solid var(--line);
         font-size: 12px;
-        line-height: 1.45;
-        word-break: break-word;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
       }
 
       .guide-table td:last-child {
@@ -1344,21 +1441,16 @@
         white-space: normal;
         text-align: center;
       }
-
-      .steps-list,
-      .checks-list,
-      .team-list {
-        padding-left: 18px;
-      }
     }
 
     @media (max-width: 390px) {
       .modal {
-        padding: 4px;
+        padding: 6px;
       }
 
       .modal-panel {
-        margin: 4px 0;
+        width: calc(100vw - 12px);
+        max-width: calc(100vw - 12px);
         padding: 12px;
       }
 
@@ -1367,18 +1459,30 @@
         padding: 12px;
       }
 
+      .modal-head h2 {
+        font-size: 18px;
+      }
+
+      .team-card-head {
+        grid-template-columns: 1fr;
+      }
+
+      .team-priority {
+        justify-self: start;
+      }
+
+      .phone-item {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .phone-item span:last-child {
+        text-align: left;
+      }
+
       .guide-table td {
         grid-template-columns: 1fr;
-        gap: 4px;
-      }
-
-      .selection-priority-item {
-        grid-template-columns: 32px 1fr;
-      }
-
-      .team-card h3,
-      .guide-card h3 {
-        font-size: 16px;
+        gap: 3px;
       }
     }
 
